@@ -26,7 +26,7 @@ public class RabbitMQWebController {
 		emp.setEmpName(empName);
 		emp.setSalary(salary);
 
-		amqpTemplate.convertAndSend("javainuseExchange", "javainuse", emp);
+		amqpTemplate.convertAndSend("pocExchange", "poc", emp);
 		return "Message sent to the RabbitMQ Successfully";
 	}
 }

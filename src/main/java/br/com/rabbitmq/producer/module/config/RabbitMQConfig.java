@@ -23,7 +23,7 @@ public class RabbitMQConfig {
 	
 	@Bean
 	DirectExchange exchange() {
-		return new DirectExchange("javainuseExchange");
+		return new DirectExchange("pocExchange");
 	}
 
 	@Bean
@@ -33,7 +33,7 @@ public class RabbitMQConfig {
 
 	@Bean
 	Queue queue() {
-		return QueueBuilder.durable("javainuse.queue").withArgument("x-dead-letter-exchange", "deadLetterExchange").withArgument("x-dead-letter-routing-key", "deadLetter").build();
+		return QueueBuilder.durable("poc.queue").withArgument("x-dead-letter-exchange", "deadLetterExchange").withArgument("x-dead-letter-routing-key", "deadLetter").build();
 	}
 
 	@Bean
@@ -43,7 +43,7 @@ public class RabbitMQConfig {
 
 	@Bean
 	Binding binding() {
-		return BindingBuilder.bind(queue()).to(exchange()).with("javainuse");
+		return BindingBuilder.bind(queue()).to(exchange()).with("poc");
 	}
 
 	@Bean
